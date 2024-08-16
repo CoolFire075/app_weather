@@ -2,8 +2,8 @@ import 'package:app_weather/features/search/domain/models/weather_current_data.d
 import 'package:app_weather/features/search/domain/models/weather_location_data.dart';
 
 class WeatherData {
-  final WeatherLocationData location;
-  final WeatherCurrentData current;
+  final WeatherLocationData? location;
+  final WeatherCurrentData? current;
 
   WeatherData({
     required this.location,

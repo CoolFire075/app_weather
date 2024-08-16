@@ -1,4 +1,3 @@
-import 'package:app_weather/features/search/domain/models/weather_current_data.dart';
 import 'package:app_weather/features/search/presentation/bloc/city_search_bloc.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -35,8 +34,10 @@ class _Body extends StatelessWidget {
               padding: const EdgeInsets.all(16.0),
               child: _SearchTextField(),
             ),
+              _SearchWeatherIcon(),
             _SearchIcons(),
             _SearchText(),
+            // _SearchText2(),
           ],
         );
       },
@@ -59,12 +60,24 @@ class _SearchIcons extends StatelessWidget {
             child: Row(
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
-                Text(
-                  'data',
-                  style: TextStyle(fontSize: 30),
+                BlocBuilder<CitySearchBloc, CitySearchState>(
+                  builder: (context, state) {
+                    return Text(
+                      '${state.data?.current?.tempC}',
+                      style: TextStyle(fontSize: 30),
+                    );
+                  },
                 ),
-                SvgPicture.asset('assets/icons/ic_snow.svg',width: 70,),
-                Text("${WeatherCurrentData().tempF}")
+                Text(
+                  '°C',
+                  style: TextStyle(
+                    fontSize: 30,
+                  ),
+                ),
+                // SvgPicture.asset(
+                //   'assets/icons/ic_snow.svg',
+                //   width: 70,
+                // ),
               ],
             ),
           ),
@@ -72,7 +85,6 @@ class _SearchIcons extends StatelessWidget {
               border: Border.all(color: Colors.black),
               borderRadius: BorderRadius.circular(40)),
         ),
-        SvgPicture.asset('assets/icons/ic_thunderstorm_showers.svg',width: 70,)
       ],
     );
   }
@@ -122,3 +134,38 @@ class _SearchText extends StatelessWidget {
     );
   }
 }
+
+class _SearchWeatherIcon extends StatelessWidget {
+  const _SearchWeatherIcon({super.key});
+
+  @override
+  Widget build(BuildContext context) {
+    return Row(
+      mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+      children: [
+        BlocBuilder<CitySearchBloc, CitySearchState>(
+          builder: (context, state) {
+            final path = state.data?.current?.condition.weatherIcon;
+            if (path == null || path.isEmpty) {
+              return const SizedBox();
+            }
+            return SvgPicture.asset(
+              path,
+              width: 150,
+            );
+          },
+        )
+      ],
+    );
+  }
+}
+
+class _HumidityWidget extends StatelessWidget {
+  const _HumidityWidget({super.key});
+
+  @override
+  Widget build(BuildContext context) {
+    return const Placeholder();
+  }
+}
+

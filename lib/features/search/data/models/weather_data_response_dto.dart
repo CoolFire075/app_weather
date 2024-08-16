@@ -3,8 +3,8 @@ import 'package:app_weather/features/search/data/models/weather_current_response
 import 'package:app_weather/features/search/data/models/weather_location_response_dto.dart';
 
 class WeatherDataResponseDto {
-  final WeatherLocationResponseDto location;
-  final WeatherCurrentResponseDto current;
+  final WeatherLocationResponseDto? location;
+  final WeatherCurrentResponseDto? current;
 
   WeatherDataResponseDto({
     required this.location,

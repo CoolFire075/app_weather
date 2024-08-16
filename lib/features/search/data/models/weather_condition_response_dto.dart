@@ -1,7 +1,7 @@
 class WeatherConditionResponseDto {
-  final String text;
-  final String icon;
-  final int code;
+  final String? text;
+  final String? icon;
+  final int? code;
 
   WeatherConditionResponseDto({
     required this.text,

@@ -1,35 +1,35 @@
 import 'package:app_weather/features/search/domain/models/weather_condition_data.dart';
 
 class WeatherCurrentData {
-  final int lastUpdatedEpoch;
-  final String lastUpdated;
-  final double tempC;
-  final double tempF;
-  final int isDay;
-  final WeatherConditionData condition;
-  final double windMph;
-  final double windKph;
-  final int windDegree;
-  final String windDir;
-  final double pressureMb;
-  final double pressureIn;
-  final double precipMm;
-  final double precipIn;
-  final int humidity;
-  final int cloud;
-  final double feelslikeC;
-  final double feelslikeF;
-  final double windchillC;
-  final double windchillF;
-  final double heatindexC;
-  final double heatindexF;
-  final double dewpointC;
-  final double dewpointF;
-  final double visKm;
-  final double visMiles;
-  final double uv;
-  final double gustMph;
-  final double gustKph;
+  final int? lastUpdatedEpoch;
+  final String? lastUpdated;
+  final double? tempC;
+  final double? tempF;
+  final int? isDay;
+  final WeatherConditionData? condition;
+  final double? windMph;
+  final double? windKph;
+  final int? windDegree;
+  final String? windDir;
+  final double? pressureMb;
+  final double? pressureIn;
+  final double? precipMm;
+  final double? precipIn;
+  final int? humidity;
+  final int? cloud;
+  final double? feelslikeC;
+  final double? feelslikeF;
+  final double? windchillC;
+  final double? windchillF;
+  final double? heatindexC;
+  final double? heatindexF;
+  final double? dewpointC;
+  final double? dewpointF;
+  final double? visKm;
+  final double? visMiles;
+  final double? uv;
+  final double? gustMph;
+  final double? gustKph;
 
   WeatherCurrentData({
     required this.lastUpdatedEpoch,

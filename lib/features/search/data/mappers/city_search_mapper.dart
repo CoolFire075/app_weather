@@ -9,9 +9,11 @@ import 'package:app_weather/features/search/domain/models/weather_location_data.
 
 class CitySearchMapper {
   WeatherData mapWeatherData(WeatherDataResponseDto dto) {
+    final location = dto.location;
+    final current = dto.current;
     return WeatherData(
-      location: mapWeatherLocationData(dto.location),
-      current: mapWeatherCurrentData(dto.current),
+      location: location != null ? mapWeatherLocationData(location) : null,
+      current: current != null ? mapWeatherCurrentData(current) : null,
     );
   }
 
@@ -29,13 +31,14 @@ class CitySearchMapper {
   }
 
   WeatherCurrentData mapWeatherCurrentData(WeatherCurrentResponseDto dto) {
+    final condition = dto.condition;
     return WeatherCurrentData(
       lastUpdatedEpoch: dto.lastUpdatedEpoch,
       lastUpdated: dto.lastUpdated,
       tempC: dto.tempC,
       tempF: dto.tempF,
       isDay: dto.isDay,
-      condition: mapWeatherConditionData(dto.condition),
+      condition: condition != null ? mapWeatherConditionData(condition) : null,
       windMph: dto.windMph,
       windKph: dto.windKph,
       windDegree: dto.windDegree,
@@ -58,14 +61,16 @@ class CitySearchMapper {
       visMiles: dto.visMiles,
       uv: dto.uv,
       gustMph: dto.gustMph,
-      gustKph: dto.gustKph,);
+      gustKph: dto.gustKph,
+    );
   }
 
   WeatherConditionData mapWeatherConditionData(
-      WeatherConditionResponseDto dto) {
+      WeatherConditionResponseDto domain) {
     return WeatherConditionData(
-      text: dto.text, icon: dto.icon, code: dto.code,);
+      text: domain.text,
+      icon: domain.icon,
+      code: domain.code,
+    );
   }
 }
-
-

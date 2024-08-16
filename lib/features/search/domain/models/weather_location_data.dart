@@ -1,15 +1,6 @@
 import 'package:equatable/equatable.dart';
 
 class WeatherLocationData extends Equatable {
-  final String name;
-  final String region;
-  final String country;
-  final double lat;
-  final double lon;
-  final String tzId;
-  final int localtimeEpoch;
-  final String localtime;
-
   const WeatherLocationData({
     required this.name,
     required this.region,
@@ -20,6 +11,17 @@ class WeatherLocationData extends Equatable {
     required this.localtimeEpoch,
     required this.localtime,
   });
+
+  final String? name;
+  final String? region;
+  final String? country;
+  final double? lat;
+  final double? lon;
+  final String? tzId;
+  final int? localtimeEpoch;
+  final String? localtime;
+
+
 
   @override
   String toString() {
