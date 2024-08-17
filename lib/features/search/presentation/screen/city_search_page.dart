@@ -36,7 +36,13 @@ class _Body extends StatelessWidget {
             ),
             Column(
               children: [
-                _LocationCityNameText(),
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  children: [
+                    _LocationCityNameText(),
+                    _LocalTimeWidget(),
+                  ],
+                ),
                 Row(
                   mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                   children: [
@@ -51,9 +57,15 @@ class _Body extends StatelessWidget {
                     _HumidityIcon(),
                   ],
                 ),
-                Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                  children: [_PressureWidget()],
+                Padding(
+                  padding: const EdgeInsets.only(top: 16.0),
+                  child: Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                    children: [
+                      _PressureWidget(),
+                      _CloudCoveredSkyPercent(),
+                    ],
+                  ),
                 ),
               ],
             ),
@@ -61,6 +73,77 @@ class _Body extends StatelessWidget {
           ],
         );
       },
+    );
+  }
+}
+
+class _LocalTimeWidget extends StatelessWidget {
+  const _LocalTimeWidget({super.key});
+
+  @override
+  Widget build(BuildContext context) {
+    return BlocBuilder<CitySearchBloc, CitySearchState>(
+      builder: (context, state) {
+        return Padding(
+          padding: const EdgeInsets.only(right: 50.0),
+          child: Text('${state.data?.location?.localtime}', style: TextStyle(color: Colors.white, fontSize: 20),),
+        );
+      },
+    );
+  }
+}
+
+class _CloudCoveredSkyPercent extends StatelessWidget {
+  const _CloudCoveredSkyPercent({super.key});
+
+  @override
+  Widget build(BuildContext context) {
+    return Row(
+      // mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+      children: [
+        Container(
+          width: 150,
+          height: 100,
+          child: Center(
+            child: Column(
+              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+              children: [
+                Icon(
+                  Icons.cloud,
+                  size: 50,
+                  color: Colors.blue,
+                ),
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: [
+                    BlocBuilder<CitySearchBloc, CitySearchState>(
+                      builder: (context, state) {
+                        return Text(
+                          '${state.data?.current?.cloud}',
+                          style: TextStyle(fontSize: 30),
+                        );
+                      },
+                    ),
+                    Text(
+                      '%',
+                      style: TextStyle(
+                        fontSize: 30,
+                      ),
+                    ),
+                    // SvgPicture.asset(
+                    //   'assets/icons/ic_snow.svg',
+                    //   width: 70,
+                    // ),
+                  ],
+                ),
+              ],
+            ),
+          ),
+          decoration: BoxDecoration(
+              border: Border.all(color: Colors.black),
+              borderRadius: BorderRadius.circular(40)),
+        ),
+      ],
     );
   }
 }
@@ -90,7 +173,8 @@ class _PressureWidget extends StatelessWidget {
                   children: [
                     BlocBuilder<CitySearchBloc, CitySearchState>(
                       builder: (context, state) {
-                        final notNullVariable = state.data?.current?.pressureMb ?? 0;
+                        final notNullVariable =
+                            state.data?.current?.pressureMb ?? 0;
                         final pressure = notNullVariable * 0.75;
                         return Text(
                           '${pressure.toInt()}',

@@ -16,6 +16,6 @@ class WeatherModel extends Equatable {
 
   @override
   String toString() {
-    return 'WeatherModel{location: $location, current: $current}';
+    return 'location: $location, current: $current';
   }
 }

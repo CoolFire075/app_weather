@@ -21,6 +21,6 @@ class WeatherLocationModel {
 
   @override
   String toString() {
-    return 'WeatherLocationModel{name: $name, region: $region, country: $country, localtime: $localtime}';
+    return 'name: $name, region: $region, country: $country, localtime: $localtime';
   }
 }
