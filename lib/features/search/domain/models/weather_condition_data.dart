@@ -13,7 +13,7 @@ class WeatherConditionData extends Equatable {
 
   @override
   String toString() {
-    return 'WeatherConditionData{text: $text, icon: $icon, code: $code}';
+    return '{text: $text, icon: $icon, code: $code}';
   }
 
   @override

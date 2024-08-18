@@ -19,6 +19,6 @@ class WeatherConditionResponseDto {
 
   @override
   String toString() {
-    return 'WeatherConditionResponseDto{text: $text, icon: $icon, code: $code}';
+    return '{text: $text, icon: $icon, code: $code}';
   }
 }

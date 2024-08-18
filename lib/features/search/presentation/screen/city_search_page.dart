@@ -1,3 +1,4 @@
+import 'package:app_weather/features/presentation/screen/weather_second_screen.dart';
 import 'package:app_weather/features/search/presentation/bloc/city_search_bloc.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -9,7 +10,6 @@ class SearchWeatherPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return const Scaffold(
-      backgroundColor: Colors.lightBlueAccent,
       body: Center(
         child: _Body(),
       ),
@@ -28,51 +28,72 @@ class _Body extends StatelessWidget {
         if (state.isLoading) {
           return const CircularProgressIndicator();
         }
-        return ListView(
+        return Stack(
           children: [
-            Padding(
-              padding: const EdgeInsets.all(16.0),
-              child: _SearchTextField(),
+            SizedBox(
+              width: double.infinity,
+              height: double.infinity,
+              child: Image.network(
+                'https://e1.pxfuel.com/desktop-wallpaper/479/194/desktop-wallpaper-22-iphone-for-people-who-live-on-cloud-9-aesthetic-for-iphone-thumbnail.jpg',
+                fit: BoxFit.cover,
+              ),
             ),
-            Column(
-              children: [
-                Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                  children: [
-                    _LocationCityNameText(),
-                    _LocalTimeWidget(),
-                  ],
-                ),
-                Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                  children: [
-                    _TempText(),
-                    _SearchWeatherIcon(),
-                  ],
-                ),
-                Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                  children: [
-                    _TempIcon(),
-                    _HumidityIcon(),
-                  ],
-                ),
-                Padding(
-                  padding: const EdgeInsets.only(top: 16.0),
-                  child: Row(
-                    mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                    children: [
-                      _PressureWidget(),
-                      _CloudCoveredSkyPercent(),
-                    ],
-                  ),
-                ),
-              ],
-            ),
-            _SearchText(),
+            _MainScreen(),
           ],
         );
       },
+    );
+  }
+}
+
+class _MainScreen extends StatelessWidget {
+  const _MainScreen({super.key});
+
+  @override
+  Widget build(BuildContext context) {
+    return ListView(
+      children: [
+        Padding(
+          padding: const EdgeInsets.all(16.0),
+          child: _SearchTextField(),
+        ),
+        Column(
+          children: [
+            Row(
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              children: [
+                _LocationCityNameText(),
+                _LocalTimeWidget(),
+              ],
+            ),
+            Row(
+              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+              children: [
+                _TempText(),
+                _SearchWeatherIcon(),
+              ],
+            ),
+            Row(
+              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+              children: [
+                _TempIcon(),
+                _HumidityIcon(),
+              ],
+            ),
+            Padding(
+              padding: const EdgeInsets.only(top: 16.0),
+              child: Row(
+                mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                children: [
+                  _PressureWidget(),
+                  _CloudCoveredSkyPercent(),
+                ],
+              ),
+            ),
+          ],
+        ),
+        _SearchText(),
+      ],
     );
   }
 }
@@ -86,7 +107,10 @@ class _LocalTimeWidget extends StatelessWidget {
       builder: (context, state) {
         return Padding(
           padding: const EdgeInsets.only(right: 50.0),
-          child: Text('${state.data?.location?.localtime}', style: TextStyle(color: Colors.white, fontSize: 20),),
+          child: Text(
+            '${state.data?.location?.localtime}',
+            style: TextStyle(color: Colors.white, fontSize: 20),
+          ),
         );
       },
     );
@@ -373,9 +397,33 @@ class _SearchButton extends StatelessWidget {
   Widget build(BuildContext context) {
     final bloc = context.read<CitySearchBloc>();
 
-    return FloatingActionButton(
-      onPressed: () => bloc.add(CitySearchDataFetched()),
-      child: Icon(Icons.search_rounded),
+    return BlocBuilder<CitySearchBloc, CitySearchState>(
+      builder: (context, state) {
+        return Row(
+          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+          children: [
+            Padding(
+              padding: const EdgeInsets.only(left: 24.0),
+              child: FloatingActionButton(
+                onPressed: () {
+                    final data = state.data;
+                    if (data == null) return;
+                  Navigator.of(context).push(
+                  MaterialPageRoute(
+                  builder: (context) => SecondMainScreen(weatherModel: data),
+                  ),
+                  );
+                },
+                child: Icon(Icons.add),
+              ),
+            ),
+            FloatingActionButton(
+              onPressed: () => bloc.add(CitySearchDataFetched()),
+              child: Icon(Icons.search_rounded),
+            ),
+          ],
+        );
+      },
     );
   }
 }
