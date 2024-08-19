@@ -13,14 +13,6 @@ class SecondMainScreen extends StatelessWidget {
     final notNullableWindSpeed = weatherModel.current?.windKph ?? 0;
     final windSpeed = notNullableWindSpeed / 3.6;
     return Stack(children: [
-      // SizedBox(
-      //   height: double.infinity,
-      //   width: double.infinity,
-      //   child: Image.network(
-      //     'https://w0.peakpx.com/wallpaper/884/834/HD-wallpaper-spring-clouds-green-hill-natural-nature-spring-weather-tree.jpg',
-      //     fit: BoxFit.cover,
-      //   ),
-      // ),
       SizedBox(
         width: double.infinity,
         height: double.infinity,

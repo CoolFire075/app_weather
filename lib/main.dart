@@ -1,3 +1,4 @@
+import 'package:app_weather/features/presentation/screen/weather_start_screen.dart';
 import 'package:app_weather/features/search/data/api/city_search_api.dart';
 import 'package:app_weather/features/search/presentation/bloc/city_search_bloc.dart';
 import 'package:app_weather/features/search/presentation/screen/city_search_page.dart';
@@ -5,7 +6,24 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
 void main() {
-  runApp(const MyApp());
+  runApp(const StartScreen());
+}
+
+class StartScreen extends StatelessWidget {
+  const StartScreen({super.key});
+
+  @override
+  Widget build(BuildContext context) {
+    return MaterialApp(
+      debugShowCheckedModeBanner: false,
+      title: 'Flutter Demo',
+      theme: ThemeData(
+        colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
+        useMaterial3: true,
+      ),
+      home: WeatherStartScreen(),
+    );
+  }
 }
 
 class MyApp extends StatelessWidget {

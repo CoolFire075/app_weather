@@ -406,12 +406,13 @@ class _SearchButton extends StatelessWidget {
               padding: const EdgeInsets.only(left: 24.0),
               child: FloatingActionButton(
                 onPressed: () {
-                    final data = state.data;
-                    if (data == null) return;
+                  final data = state.data;
+                  if (data == null) return;
                   Navigator.of(context).push(
-                  MaterialPageRoute(
-                  builder: (context) => SecondMainScreen(weatherModel: data),
-                  ),
+                    MaterialPageRoute(
+                      builder: (context) =>
+                          SecondMainScreen(weatherModel: data),
+                    ),
                   );
                 },
                 child: Icon(Icons.add),
