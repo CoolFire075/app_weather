@@ -13,21 +13,29 @@ class SecondMainScreen extends StatelessWidget {
     final notNullableWindSpeed = weatherModel.current?.windKph ?? 0;
     final windSpeed = notNullableWindSpeed / 3.6;
     return Stack(children: [
-      SizedBox(
-        height: double.infinity,
-        width: double.infinity,
-        child: Image.network(
-          'https://w0.peakpx.com/wallpaper/884/834/HD-wallpaper-spring-clouds-green-hill-natural-nature-spring-weather-tree.jpg',
-          fit: BoxFit.cover,
-        ),
-      ),
+      // SizedBox(
+      //   height: double.infinity,
+      //   width: double.infinity,
+      //   child: Image.network(
+      //     'https://w0.peakpx.com/wallpaper/884/834/HD-wallpaper-spring-clouds-green-hill-natural-nature-spring-weather-tree.jpg',
+      //     fit: BoxFit.cover,
+      //   ),
+      // ),
       Scaffold(
-        backgroundColor: Colors.transparent,
+        backgroundColor: Colors.blue,
         appBar: AppBar(
-          backgroundColor: Colors.transparent,
+          centerTitle: true,
+          title: Text(
+            '${weatherModel.location?.name}',
+            style: TextStyle(
+              fontSize: 40,
+            ),
+          ),
+          backgroundColor: Colors.blue,
         ),
         body: ListView(
           children: [
+            _LocalTimeWidget(weatherModel: weatherModel),
             _TemperatureWidget(weatherModel: weatherModel),
             _FeelsLikeWidget(weatherModel: weatherModel),
             _HeatIndexWidget(weatherModel: weatherModel),
@@ -36,12 +44,103 @@ class SecondMainScreen extends StatelessWidget {
             _CloudWidget(weatherModel: weatherModel),
             _WindSpeedKphWidget(weatherModel: weatherModel),
             _WindSpeedMpsWidget(windSpeed: windSpeed),
+            _PrecipitationAmountWidget(weatherModel: weatherModel),
           ],
         ),
       ),
     ]);
   }
 }
+
+class _PrecipitationAmountWidget extends StatelessWidget {
+  const _PrecipitationAmountWidget({
+    super.key,
+    required this.weatherModel,
+  });
+
+  final WeatherModel weatherModel;
+
+  @override
+  Widget build(BuildContext context) {
+    return Expanded(
+      child: Container(
+        height: 100,
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: [
+            Row(
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              children: [
+                Icon(
+                  Icons.cloudy_snowing,
+                  size: 40,
+                  color: Colors.blue,
+                ),
+                Text(
+                  'Precip amount: ',
+                  style: TextStyle(fontSize: 30),
+                ),
+                Text(
+                  '${weatherModel.current?.precipMm}мм',
+                  style: TextStyle(fontSize: 25),
+                ),
+              ],
+            ),
+          ],
+        ),
+        decoration: BoxDecoration(
+            color: Colors.lightBlueAccent,
+            border: Border.all(color: Colors.lightBlue),
+            borderRadius: BorderRadius.circular(40)),
+      ),
+    );
+  }
+}
+
+class _LocalTimeWidget extends StatelessWidget {
+  const _LocalTimeWidget({
+    super.key,
+    required this.weatherModel,
+  });
+
+  final WeatherModel weatherModel;
+
+  @override
+  Widget build(BuildContext context) {
+    return Expanded(
+      child: Container(
+        height: 100,
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: [
+            Row(
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              children: [
+                Icon(
+                  Icons.timer,
+                  size: 40,
+                ),
+                Text(
+                  'Local time: ',
+                  style: TextStyle(fontSize: 30),
+                ),
+                Text(
+                  '${weatherModel.location?.localtime}',
+                  style: TextStyle(fontSize: 25),
+                ),
+              ],
+            ),
+          ],
+        ),
+        decoration: BoxDecoration(
+            color: Colors.lightBlueAccent,
+            border: Border.all(color: Colors.lightBlue),
+            borderRadius: BorderRadius.circular(40)),
+      ),
+    );
+  }
+}
+
 class _WindSpeedMpsWidget extends StatelessWidget {
   const _WindSpeedMpsWidget({
     super.key,
@@ -59,7 +158,7 @@ class _WindSpeedMpsWidget extends StatelessWidget {
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
             Row(
-              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
                 Icon(
                   Icons.wind_power,
@@ -79,7 +178,8 @@ class _WindSpeedMpsWidget extends StatelessWidget {
           ],
         ),
         decoration: BoxDecoration(
-            border: Border.all(color: Colors.black),
+            color: Colors.lightBlueAccent,
+            border: Border.all(color: Colors.lightBlue),
             borderRadius: BorderRadius.circular(40)),
       ),
     );
@@ -103,7 +203,7 @@ class _WindSpeedKphWidget extends StatelessWidget {
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
             Row(
-              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
                 Icon(
                   Icons.wind_power,
@@ -123,7 +223,8 @@ class _WindSpeedKphWidget extends StatelessWidget {
           ],
         ),
         decoration: BoxDecoration(
-            border: Border.all(color: Colors.black),
+            color: Colors.lightBlueAccent,
+            border: Border.all(color: Colors.lightBlue),
             borderRadius: BorderRadius.circular(40)),
       ),
     );
@@ -147,7 +248,7 @@ class _CloudWidget extends StatelessWidget {
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
             Row(
-              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
                 Icon(
                   Icons.cloud,
@@ -167,7 +268,8 @@ class _CloudWidget extends StatelessWidget {
           ],
         ),
         decoration: BoxDecoration(
-            border: Border.all(color: Colors.black),
+            color: Colors.lightBlueAccent,
+            border: Border.all(color: Colors.lightBlue),
             borderRadius: BorderRadius.circular(40)),
       ),
     );
@@ -191,7 +293,7 @@ class _PressureWidget extends StatelessWidget {
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
             Row(
-              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
                 Icon(
                   Icons.compress,
@@ -211,7 +313,8 @@ class _PressureWidget extends StatelessWidget {
           ],
         ),
         decoration: BoxDecoration(
-            border: Border.all(color: Colors.black),
+            color: Colors.lightBlueAccent,
+            border: Border.all(color: Colors.lightBlue),
             borderRadius: BorderRadius.circular(40)),
       ),
     );
@@ -235,7 +338,7 @@ class _HumidityWidget extends StatelessWidget {
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
             Row(
-              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
                 Icon(
                   Icons.opacity,
@@ -255,7 +358,8 @@ class _HumidityWidget extends StatelessWidget {
           ],
         ),
         decoration: BoxDecoration(
-            border: Border.all(color: Colors.black),
+            color: Colors.lightBlueAccent,
+            border: Border.all(color: Colors.lightBlue),
             borderRadius: BorderRadius.circular(40)),
       ),
     );
@@ -279,7 +383,7 @@ class _HeatIndexWidget extends StatelessWidget {
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
             Row(
-              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
                 Icon(
                   Icons.sunny,
@@ -299,7 +403,8 @@ class _HeatIndexWidget extends StatelessWidget {
           ],
         ),
         decoration: BoxDecoration(
-            border: Border.all(color: Colors.black),
+            color: Colors.lightBlueAccent,
+            border: Border.all(color: Colors.lightBlue),
             borderRadius: BorderRadius.circular(40)),
       ),
     );
@@ -323,7 +428,7 @@ class _FeelsLikeWidget extends StatelessWidget {
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
             Row(
-              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
                 Icon(
                   Icons.pan_tool,
@@ -343,7 +448,8 @@ class _FeelsLikeWidget extends StatelessWidget {
           ],
         ),
         decoration: BoxDecoration(
-            border: Border.all(color: Colors.black),
+            color: Colors.lightBlueAccent,
+            border: Border.all(color: Colors.lightBlue),
             borderRadius: BorderRadius.circular(40)),
       ),
     );
@@ -367,7 +473,7 @@ class _TemperatureWidget extends StatelessWidget {
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
             Row(
-              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
                 Icon(
                   Icons.thermostat,
@@ -387,7 +493,8 @@ class _TemperatureWidget extends StatelessWidget {
           ],
         ),
         decoration: BoxDecoration(
-            border: Border.all(color: Colors.black),
+            color: Colors.lightBlueAccent,
+            border: Border.all(color: Colors.lightBlue),
             borderRadius: BorderRadius.circular(40)),
       ),
     );
