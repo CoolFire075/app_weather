@@ -35,7 +35,7 @@ class SecondMainScreen extends StatelessWidget {
           centerTitle: true,
           title: Text(
             '${weatherModel.location?.name}',
-            style: TextStyle(
+            style: const TextStyle(
               fontSize: 40,
             ),
           ),
@@ -71,37 +71,37 @@ class _PrecipitationAmountWidget extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Padding(
-      padding: const EdgeInsets.all( 10.0),
+      padding: const EdgeInsets.all(10.0),
       child: Expanded(
         child: Container(
           height: 100,
+          decoration: BoxDecoration(
+              color: Colors.lightBlueAccent.withOpacity(0.5),
+              border: Border.all(color: Colors.lightBlue),
+              borderRadius: BorderRadius.circular(40)),
           child: Column(
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
               Row(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
-                  Icon(
+                  const Icon(
                     Icons.cloudy_snowing,
                     size: 40,
                     color: Colors.blue,
                   ),
-                  Text(
+                  const Text(
                     'Precip amount: ',
                     style: TextStyle(fontSize: 30),
                   ),
                   Text(
                     '${weatherModel.current?.precipMm}мм',
-                    style: TextStyle(fontSize: 25),
+                    style: const TextStyle(fontSize: 25),
                   ),
                 ],
               ),
             ],
           ),
-          decoration: BoxDecoration(
-              color: Colors.lightBlueAccent.withOpacity(0.5),
-              border: Border.all(color: Colors.lightBlue),
-              borderRadius: BorderRadius.circular(40)),
         ),
       ),
     );
@@ -123,32 +123,32 @@ class _LocalTimeWidget extends StatelessWidget {
       child: Expanded(
         child: Container(
           height: 100,
+          decoration: BoxDecoration(
+              color: Colors.lightBlueAccent.withOpacity(0.5),
+              border: Border.all(color: Colors.lightBlue),
+              borderRadius: BorderRadius.circular(40)),
           child: Column(
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
               Row(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
-                  Icon(
+                  const Icon(
                     Icons.timer,
                     size: 40,
                   ),
-                  Text(
+                  const Text(
                     'Local time: ',
                     style: TextStyle(fontSize: 30),
                   ),
                   Text(
                     '${weatherModel.location?.localtime}',
-                    style: TextStyle(fontSize: 25),
+                    style: const TextStyle(fontSize: 25),
                   ),
                 ],
               ),
             ],
           ),
-          decoration: BoxDecoration(
-              color: Colors.lightBlueAccent.withOpacity(0.5),
-              border: Border.all(color: Colors.lightBlue),
-              borderRadius: BorderRadius.circular(40)),
         ),
       ),
     );
@@ -161,7 +161,7 @@ class _WindSpeedMpsWidget extends StatelessWidget {
     required this.windSpeed,
   });
 
-  final windSpeed;
+  final double windSpeed;
 
   @override
   Widget build(BuildContext context) {
@@ -170,33 +170,33 @@ class _WindSpeedMpsWidget extends StatelessWidget {
       child: Expanded(
         child: Container(
           height: 100,
+          decoration: BoxDecoration(
+              color: Colors.lightBlueAccent.withOpacity(0.5),
+              border: Border.all(color: Colors.lightBlue),
+              borderRadius: BorderRadius.circular(40)),
           child: Column(
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
               Row(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
-                  Icon(
+                  const Icon(
                     Icons.wind_power,
                     size: 50,
                     color: Colors.blue,
                   ),
-                  Text(
+                  const Text(
                     'Wind speed: ',
                     style: TextStyle(fontSize: 30),
                   ),
                   Text(
                     '${windSpeed.toStringAsFixed(2)}m/sec',
-                    style: TextStyle(fontSize: 30),
+                    style: const TextStyle(fontSize: 30),
                   )
                 ],
               ),
             ],
           ),
-          decoration: BoxDecoration(
-              color: Colors.lightBlueAccent.withOpacity(0.5),
-              border: Border.all(color: Colors.lightBlue),
-              borderRadius: BorderRadius.circular(40)),
         ),
       ),
     );
@@ -218,33 +218,33 @@ class _WindSpeedKphWidget extends StatelessWidget {
       child: Expanded(
         child: Container(
           height: 100,
+          decoration: BoxDecoration(
+              color: Colors.lightBlueAccent.withOpacity(0.5),
+              border: Border.all(color: Colors.lightBlue),
+              borderRadius: BorderRadius.circular(40)),
           child: Column(
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
               Row(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
-                  Icon(
+                  const Icon(
                     Icons.wind_power,
                     size: 50,
                     color: Colors.blue,
                   ),
-                  Text(
+                  const Text(
                     'Wind speed: ',
                     style: TextStyle(fontSize: 30),
                   ),
                   Text(
                     '${weatherModel.current?.windKph}km/h',
-                    style: TextStyle(fontSize: 30),
+                    style: const TextStyle(fontSize: 30),
                   )
                 ],
               ),
             ],
           ),
-          decoration: BoxDecoration(
-              color: Colors.lightBlueAccent.withOpacity(0.5),
-              border: Border.all(color: Colors.lightBlue),
-              borderRadius: BorderRadius.circular(40)),
         ),
       ),
     );
@@ -266,33 +266,33 @@ class _CloudWidget extends StatelessWidget {
       child: Expanded(
         child: Container(
           height: 100,
+          decoration: BoxDecoration(
+              color: Colors.lightBlueAccent.withOpacity(0.5),
+              border: Border.all(color: Colors.lightBlue),
+              borderRadius: BorderRadius.circular(40)),
           child: Column(
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
               Row(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
-                  Icon(
+                  const Icon(
                     Icons.cloud,
                     size: 50,
                     color: Colors.blue,
                   ),
-                  Text(
+                  const Text(
                     'Clouds cover sky: ',
                     style: TextStyle(fontSize: 30),
                   ),
                   Text(
                     '${weatherModel.current?.cloud}%',
-                    style: TextStyle(fontSize: 30),
+                    style: const TextStyle(fontSize: 30),
                   )
                 ],
               ),
             ],
           ),
-          decoration: BoxDecoration(
-              color: Colors.lightBlueAccent.withOpacity(0.5),
-              border: Border.all(color: Colors.lightBlue),
-              borderRadius: BorderRadius.circular(40)),
         ),
       ),
     );
@@ -314,33 +314,33 @@ class _PressureWidget extends StatelessWidget {
       child: Expanded(
         child: Container(
           height: 100,
+          decoration: BoxDecoration(
+              color: Colors.lightBlueAccent.withOpacity(0.5),
+              border: Border.all(color: Colors.lightBlue),
+              borderRadius: BorderRadius.circular(40)),
           child: Column(
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
               Row(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
-                  Icon(
+                  const Icon(
                     Icons.compress,
                     size: 50,
                     color: Colors.yellow,
                   ),
-                  Text(
+                  const Text(
                     'Pressure: ',
                     style: TextStyle(fontSize: 30),
                   ),
                   Text(
                     '${pressure.toInt()}мб',
-                    style: TextStyle(fontSize: 30),
+                    style: const TextStyle(fontSize: 30),
                   )
                 ],
               ),
             ],
           ),
-          decoration: BoxDecoration(
-              color: Colors.lightBlueAccent.withOpacity(0.5),
-              border: Border.all(color: Colors.lightBlue),
-              borderRadius: BorderRadius.circular(40)),
         ),
       ),
     );
@@ -362,33 +362,33 @@ class _HumidityWidget extends StatelessWidget {
       child: Expanded(
         child: Container(
           height: 100,
+          decoration: BoxDecoration(
+              color: Colors.lightBlueAccent.withOpacity(0.5),
+              border: Border.all(color: Colors.lightBlue),
+              borderRadius: BorderRadius.circular(40)),
           child: Column(
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
               Row(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
-                  Icon(
+                  const Icon(
                     Icons.opacity,
                     color: Colors.blue,
                     size: 50,
                   ),
-                  Text(
+                  const Text(
                     'Humidity: ',
                     style: TextStyle(fontSize: 30),
                   ),
                   Text(
                     '${weatherModel.current?.humidity}%',
-                    style: TextStyle(fontSize: 30),
+                    style: const TextStyle(fontSize: 30),
                   )
                 ],
               ),
             ],
           ),
-          decoration: BoxDecoration(
-              color: Colors.lightBlueAccent.withOpacity(0.5),
-              border: Border.all(color: Colors.lightBlue),
-              borderRadius: BorderRadius.circular(40)),
         ),
       ),
     );
@@ -410,33 +410,33 @@ class _HeatIndexWidget extends StatelessWidget {
       child: Expanded(
         child: Container(
           height: 100,
+          decoration: BoxDecoration(
+              color: Colors.lightBlueAccent.withOpacity(0.5),
+              border: Border.all(color: Colors.lightBlue),
+              borderRadius: BorderRadius.circular(40)),
           child: Column(
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
               Row(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
-                  Icon(
+                  const Icon(
                     Icons.sunny,
                     size: 50,
                     color: Colors.yellow,
                   ),
-                  Text(
+                  const Text(
                     'Heat index: ',
                     style: TextStyle(fontSize: 30),
                   ),
                   Text(
                     '${weatherModel.current?.heatindexC}',
-                    style: TextStyle(fontSize: 30),
+                    style: const TextStyle(fontSize: 30),
                   )
                 ],
               ),
             ],
           ),
-          decoration: BoxDecoration(
-              color: Colors.lightBlueAccent.withOpacity(0.5),
-              border: Border.all(color: Colors.lightBlue),
-              borderRadius: BorderRadius.circular(40)),
         ),
       ),
     );
@@ -458,33 +458,33 @@ class _FeelsLikeWidget extends StatelessWidget {
       child: Expanded(
         child: Container(
           height: 100,
+          decoration: BoxDecoration(
+              color: Colors.lightBlueAccent.withOpacity(0.5),
+              border: Border.all(color: Colors.lightBlue),
+              borderRadius: BorderRadius.circular(40)),
           child: Column(
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
               Row(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
-                  Icon(
+                  const Icon(
                     Icons.pan_tool,
                     size: 50,
                     color: Colors.yellow,
                   ),
-                  Text(
+                  const Text(
                     'Feels like: ',
                     style: TextStyle(fontSize: 30),
                   ),
                   Text(
                     '${weatherModel.current?.feelslikeC}°C',
-                    style: TextStyle(fontSize: 30),
+                    style: const TextStyle(fontSize: 30),
                   )
                 ],
               ),
             ],
           ),
-          decoration: BoxDecoration(
-              color: Colors.lightBlueAccent.withOpacity(0.5),
-              border: Border.all(color: Colors.lightBlue),
-              borderRadius: BorderRadius.circular(40)),
         ),
       ),
     );
@@ -506,33 +506,33 @@ class _TemperatureWidget extends StatelessWidget {
       child: Expanded(
         child: Container(
           height: 100,
+          decoration: BoxDecoration(
+              color: Colors.lightBlueAccent.withOpacity(0.5),
+              border: Border.all(color: Colors.lightBlue),
+              borderRadius: BorderRadius.circular(40)),
           child: Column(
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
               Row(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
-                  Icon(
+                  const Icon(
                     Icons.thermostat,
                     size: 50,
                     color: Colors.red,
                   ),
-                  Text(
+                  const Text(
                     'Temperature: ',
                     style: TextStyle(fontSize: 30),
                   ),
                   Text(
                     '${weatherModel.current?.tempC}°C',
-                    style: TextStyle(fontSize: 30),
+                    style: const TextStyle(fontSize: 30),
                   )
                 ],
               ),
             ],
           ),
-          decoration: BoxDecoration(
-              color: Colors.lightBlueAccent.withOpacity(0.5),
-              border: Border.all(color: Colors.lightBlue),
-              borderRadius: BorderRadius.circular(40)),
         ),
       ),
     );
