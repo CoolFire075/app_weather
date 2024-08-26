@@ -93,7 +93,7 @@ class _MainScreen extends StatelessWidget {
             ),
           ],
         ),
-        _SearchText(),
+        _LocationText(),
       ],
     );
   }
@@ -282,16 +282,43 @@ class _SearchTextField extends StatelessWidget {
   }
 }
 
-class _SearchText extends StatelessWidget {
-  const _SearchText({super.key});
+class _LocationText extends StatelessWidget {
+  const _LocationText({super.key});
 
   @override
   Widget build(BuildContext context) {
     return BlocBuilder<CitySearchBloc, CitySearchState>(
       builder: (context, state) {
-        return Text(
-          state.data?.toString() ?? '',
-          style: TextStyle(fontSize: 20),
+        return Padding(
+          padding: const EdgeInsets.only(top: 16.0),
+          child: Column(mainAxisAlignment: MainAxisAlignment.start,
+            children: [
+              Row(mainAxisAlignment: MainAxisAlignment.start,
+                children: [
+                  Text(
+                    'City: ${state.data?.location?.name.toString() ?? ''}',
+                    style: TextStyle(fontSize: 30),
+                  ),
+                ],
+              ),
+              Row(mainAxisAlignment: MainAxisAlignment.start,
+                children: [
+                  Text(
+                    'Region: ${state.data?.location?.region.toString() ?? ''}',
+                    style: TextStyle(fontSize: 30),
+                  ),
+                ],
+              ),
+              Row(mainAxisAlignment: MainAxisAlignment.start,
+                children: [
+                  Text(
+                    'Country: ${state.data?.location?.country.toString() ?? ''}',
+                    style: TextStyle(fontSize: 30),
+                  ),
+                ],
+              ),
+            ],
+          ),
         );
       },
     );
