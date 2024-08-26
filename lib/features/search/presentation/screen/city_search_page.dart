@@ -109,7 +109,7 @@ class _LocalTimeWidget extends StatelessWidget {
         return Padding(
           padding: const EdgeInsets.only(right: 50.0),
           child: Text(
-            '${state.data?.location?.localtime}',
+            state.data?.location!.localtime ?? '',
             style: TextStyle(color: Colors.white, fontSize: 20),
           ),
         );
@@ -127,7 +127,7 @@ class _CloudCoveredSkyPercent extends StatelessWidget {
       builder: (context, state) {
         return CitySearchPageWidget(
             icon: Icons.cloud,
-            text: '${state.data?.current!.cloud}',
+            text: state.data?.current!.cloud,
             color: Colors.blue);
       },
     );
@@ -143,7 +143,7 @@ class _PressureWidget extends StatelessWidget {
       builder: (context, state) {
         return CitySearchPageWidget(
           icon: Icons.compress,
-          text: '${state.data?.current?.pressureMb}',
+          text: state.data?.current?.pressureMb,
           color: Colors.yellow,
         );
       },
@@ -163,7 +163,7 @@ class _LocationCityNameText extends StatelessWidget {
           child: Row(
             children: [
               Text(
-                '${state.data?.location?.name}',
+                state.data?.location?.name??'',
                 style: TextStyle(fontSize: 20, color: Colors.white),
               ),
             ],
@@ -181,10 +181,11 @@ class _TempText extends StatelessWidget {
   Widget build(BuildContext context) {
     return BlocBuilder<CitySearchBloc, CitySearchState>(
       builder: (context, state) {
+        if(state.data?.current?.tempC == null)return SizedBox();
         return Row(
           children: [
             Text(
-              '${state.data?.current?.tempC}',
+              state.data?.current?.tempC ?? '',
               style: TextStyle(color: Colors.white, fontSize: 70),
             ),
           ],
@@ -203,7 +204,7 @@ class _TempIcon extends StatelessWidget {
       builder: (context, state) {
         return CitySearchPageWidget(
           icon: Icons.pan_tool,
-          text: '${state.data?.current?.feelslikeC}',
+          text: state.data?.current?.feelslikeC,
           color: Colors.yellow,
         );
       },
@@ -220,7 +221,7 @@ class _HumidityIcon extends StatelessWidget {
       builder: (context, state) {
         return CitySearchPageWidget(
           icon: Icons.opacity,
-          text: '${state.data?.current?.humidity}',
+          text: state.data?.current?.humidity,
           color: Colors.blue,
         );
       },
@@ -289,6 +290,7 @@ class _LocationText extends StatelessWidget {
   Widget build(BuildContext context) {
     return BlocBuilder<CitySearchBloc, CitySearchState>(
       builder: (context, state) {
+        if(state.data?.location?.name == null) return SizedBox();
         return Padding(
           padding: const EdgeInsets.only(top: 16.0),
           child: Column(mainAxisAlignment: MainAxisAlignment.start,

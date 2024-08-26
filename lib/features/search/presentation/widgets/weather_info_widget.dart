@@ -5,14 +5,15 @@ import '../bloc/city_search_bloc.dart';
 
 class CitySearchPageWidget extends StatelessWidget {
   const CitySearchPageWidget(
-      {super.key, required this.icon, required this.text, required this.color});
+      {super.key, required this.icon,  this.text, required this.color});
 
   final IconData icon;
-  final String text;
+  final String? text;
   final MaterialColor color;
 
   @override
   Widget build(BuildContext context) {
+    if(text == null) return SizedBox();
     return Row(
       // mainAxisAlignment: MainAxisAlignment.spaceEvenly,
       children: [
@@ -37,7 +38,7 @@ class CitySearchPageWidget extends StatelessWidget {
                     BlocBuilder<CitySearchBloc, CitySearchState>(
                       builder: (context, state) {
                         return Text(
-                          text,
+                          text!,
                           style: const TextStyle(fontSize: 30),
                         );
                       },
