@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import '../../search/presentation/models/weather_model.dart';
+import '../../search/presentation/widgets/weather_info_widget.dart';
 
 class SecondMainScreen extends StatelessWidget {
   const SecondMainScreen({super.key, required this.weatherModel});
@@ -8,10 +9,6 @@ class SecondMainScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final notNullablePressure = weatherModel.current?.pressureMb ?? 0;
-    final pressure = notNullablePressure * 0.75;
-    final notNullableWindSpeed = weatherModel.current?.windKph ?? 0;
-    final windSpeed = notNullableWindSpeed / 3.6;
     return Stack(children: [
       SizedBox(
         width: double.infinity,
@@ -40,10 +37,9 @@ class SecondMainScreen extends StatelessWidget {
             _FeelsLikeWidget(weatherModel: weatherModel),
             _HeatIndexWidget(weatherModel: weatherModel),
             _HumidityWidget(weatherModel: weatherModel),
-            _PressureWidget(pressure: pressure),
+            _PressureWidget(weatherModel: weatherModel),
             _CloudWidget(weatherModel: weatherModel),
             _WindSpeedKphWidget(weatherModel: weatherModel),
-            _WindSpeedMpsWidget(windSpeed: windSpeed),
             _PrecipitationAmountWidget(weatherModel: weatherModel),
           ],
         ),
@@ -62,40 +58,11 @@ class _PrecipitationAmountWidget extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Padding(
-      padding: const EdgeInsets.all(10.0),
-      child: Expanded(
-        child: Container(
-          height: 100,
-          decoration: BoxDecoration(
-              color: Colors.lightBlueAccent.withOpacity(0.5),
-              border: Border.all(color: Colors.lightBlue),
-              borderRadius: BorderRadius.circular(40)),
-          child: Column(
-            mainAxisAlignment: MainAxisAlignment.center,
-            children: [
-              Row(
-                mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                children: [
-                  const Icon(
-                    Icons.cloudy_snowing,
-                    size: 40,
-                    color: Colors.blue,
-                  ),
-                  const Text(
-                    'Precip amount: ',
-                    style: TextStyle(fontSize: 30),
-                  ),
-                  Text(
-                    '${weatherModel.current?.precipMm}мм',
-                    style: const TextStyle(fontSize: 25),
-                  ),
-                ],
-              ),
-            ],
-          ),
-        ),
-      ),
+    return WeatherSecondScreenWidget(
+      icon: Icons.cloudy_snowing,
+      text: '${weatherModel.current?.precipMm}',
+      color: Colors.blue,
+      fieldName: 'Precip amount: ',
     );
   }
 }
@@ -110,87 +77,11 @@ class _LocalTimeWidget extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Padding(
-      padding: const EdgeInsets.all(10.0),
-      child: Expanded(
-        child: Container(
-          height: 100,
-          decoration: BoxDecoration(
-              color: Colors.lightBlueAccent.withOpacity(0.5),
-              border: Border.all(color: Colors.lightBlue),
-              borderRadius: BorderRadius.circular(40)),
-          child: Column(
-            mainAxisAlignment: MainAxisAlignment.center,
-            children: [
-              Row(
-                mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                children: [
-                  const Icon(
-                    Icons.timer,
-                    size: 40,
-                  ),
-                  const Text(
-                    'Local time: ',
-                    style: TextStyle(fontSize: 30),
-                  ),
-                  Text(
-                    '${weatherModel.location?.localtime}',
-                    style: const TextStyle(fontSize: 25),
-                  ),
-                ],
-              ),
-            ],
-          ),
-        ),
-      ),
-    );
-  }
-}
-
-class _WindSpeedMpsWidget extends StatelessWidget {
-  const _WindSpeedMpsWidget({
-    super.key,
-    required this.windSpeed,
-  });
-
-  final double windSpeed;
-
-  @override
-  Widget build(BuildContext context) {
-    return Padding(
-      padding: const EdgeInsets.all(10.0),
-      child: Expanded(
-        child: Container(
-          height: 100,
-          decoration: BoxDecoration(
-              color: Colors.lightBlueAccent.withOpacity(0.5),
-              border: Border.all(color: Colors.lightBlue),
-              borderRadius: BorderRadius.circular(40)),
-          child: Column(
-            mainAxisAlignment: MainAxisAlignment.center,
-            children: [
-              Row(
-                mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                children: [
-                  const Icon(
-                    Icons.wind_power,
-                    size: 50,
-                    color: Colors.blue,
-                  ),
-                  const Text(
-                    'Wind speed: ',
-                    style: TextStyle(fontSize: 30),
-                  ),
-                  Text(
-                    '${windSpeed.toStringAsFixed(2)}m/sec',
-                    style: const TextStyle(fontSize: 30),
-                  )
-                ],
-              ),
-            ],
-          ),
-        ),
-      ),
+    return WeatherSecondScreenWidget(
+      icon: Icons.timer,
+      text: '${weatherModel.location?.localtime}',
+      color: Colors.yellow,
+      fieldName: 'Time: ',
     );
   }
 }
@@ -205,40 +96,11 @@ class _WindSpeedKphWidget extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Padding(
-      padding: const EdgeInsets.all(10.0),
-      child: Expanded(
-        child: Container(
-          height: 100,
-          decoration: BoxDecoration(
-              color: Colors.lightBlueAccent.withOpacity(0.5),
-              border: Border.all(color: Colors.lightBlue),
-              borderRadius: BorderRadius.circular(40)),
-          child: Column(
-            mainAxisAlignment: MainAxisAlignment.center,
-            children: [
-              Row(
-                mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                children: [
-                  const Icon(
-                    Icons.wind_power,
-                    size: 50,
-                    color: Colors.blue,
-                  ),
-                  const Text(
-                    'Wind speed: ',
-                    style: TextStyle(fontSize: 30),
-                  ),
-                  Text(
-                    '${weatherModel.current?.windKph}km/h',
-                    style: const TextStyle(fontSize: 30),
-                  )
-                ],
-              ),
-            ],
-          ),
-        ),
-      ),
+    return WeatherSecondScreenWidget(
+      icon: Icons.wind_power,
+      text: '${weatherModel.current?.windKph}',
+      color: Colors.blue,
+      fieldName: 'Wind speed: ',
     );
   }
 }
@@ -253,40 +115,11 @@ class _CloudWidget extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Padding(
-      padding: const EdgeInsets.all(10.0),
-      child: Expanded(
-        child: Container(
-          height: 100,
-          decoration: BoxDecoration(
-              color: Colors.lightBlueAccent.withOpacity(0.5),
-              border: Border.all(color: Colors.lightBlue),
-              borderRadius: BorderRadius.circular(40)),
-          child: Column(
-            mainAxisAlignment: MainAxisAlignment.center,
-            children: [
-              Row(
-                mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                children: [
-                  const Icon(
-                    Icons.cloud,
-                    size: 50,
-                    color: Colors.blue,
-                  ),
-                  const Text(
-                    'Clouds cover sky: ',
-                    style: TextStyle(fontSize: 30),
-                  ),
-                  Text(
-                    '${weatherModel.current?.cloud}%',
-                    style: const TextStyle(fontSize: 30),
-                  )
-                ],
-              ),
-            ],
-          ),
-        ),
-      ),
+    return WeatherSecondScreenWidget(
+      icon: Icons.cloud,
+      text: '${weatherModel.current?.cloud}',
+      color: Colors.blue,
+      fieldName: 'Clouds cover sky: ',
     );
   }
 }
@@ -294,47 +127,18 @@ class _CloudWidget extends StatelessWidget {
 class _PressureWidget extends StatelessWidget {
   const _PressureWidget({
     super.key,
-    required this.pressure,
+    required this.weatherModel,
   });
 
-  final double pressure;
+  final WeatherModel weatherModel;
 
   @override
   Widget build(BuildContext context) {
-    return Padding(
-      padding: const EdgeInsets.all(10.0),
-      child: Expanded(
-        child: Container(
-          height: 100,
-          decoration: BoxDecoration(
-              color: Colors.lightBlueAccent.withOpacity(0.5),
-              border: Border.all(color: Colors.lightBlue),
-              borderRadius: BorderRadius.circular(40)),
-          child: Column(
-            mainAxisAlignment: MainAxisAlignment.center,
-            children: [
-              Row(
-                mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                children: [
-                  const Icon(
-                    Icons.compress,
-                    size: 50,
-                    color: Colors.yellow,
-                  ),
-                  const Text(
-                    'Pressure: ',
-                    style: TextStyle(fontSize: 30),
-                  ),
-                  Text(
-                    '${pressure.toInt()}мб',
-                    style: const TextStyle(fontSize: 30),
-                  )
-                ],
-              ),
-            ],
-          ),
-        ),
-      ),
+    return WeatherSecondScreenWidget(
+      icon: Icons.compress,
+      text: '${weatherModel.current?.pressureMb}',
+      color: Colors.yellow,
+      fieldName: 'Pressure: ',
     );
   }
 }
@@ -349,40 +153,11 @@ class _HumidityWidget extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Padding(
-      padding: const EdgeInsets.all(10.0),
-      child: Expanded(
-        child: Container(
-          height: 100,
-          decoration: BoxDecoration(
-              color: Colors.lightBlueAccent.withOpacity(0.5),
-              border: Border.all(color: Colors.lightBlue),
-              borderRadius: BorderRadius.circular(40)),
-          child: Column(
-            mainAxisAlignment: MainAxisAlignment.center,
-            children: [
-              Row(
-                mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                children: [
-                  const Icon(
-                    Icons.opacity,
-                    color: Colors.blue,
-                    size: 50,
-                  ),
-                  const Text(
-                    'Humidity: ',
-                    style: TextStyle(fontSize: 30),
-                  ),
-                  Text(
-                    '${weatherModel.current?.humidity}%',
-                    style: const TextStyle(fontSize: 30),
-                  )
-                ],
-              ),
-            ],
-          ),
-        ),
-      ),
+    return WeatherSecondScreenWidget(
+      icon: Icons.opacity,
+      text: '${weatherModel.current?.humidity}',
+      color: Colors.blue,
+      fieldName: 'Humidity: ',
     );
   }
 }
@@ -397,40 +172,11 @@ class _HeatIndexWidget extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Padding(
-      padding: const EdgeInsets.all(10.0),
-      child: Expanded(
-        child: Container(
-          height: 100,
-          decoration: BoxDecoration(
-              color: Colors.lightBlueAccent.withOpacity(0.5),
-              border: Border.all(color: Colors.lightBlue),
-              borderRadius: BorderRadius.circular(40)),
-          child: Column(
-            mainAxisAlignment: MainAxisAlignment.center,
-            children: [
-              Row(
-                mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                children: [
-                  const Icon(
-                    Icons.sunny,
-                    size: 50,
-                    color: Colors.yellow,
-                  ),
-                  const Text(
-                    'Heat index: ',
-                    style: TextStyle(fontSize: 30),
-                  ),
-                  Text(
-                    '${weatherModel.current?.heatindexC}',
-                    style: const TextStyle(fontSize: 30),
-                  )
-                ],
-              ),
-            ],
-          ),
-        ),
-      ),
+    return WeatherSecondScreenWidget(
+      icon: Icons.sunny,
+      text: '${weatherModel.current?.heatindexC}',
+      color: Colors.yellow,
+      fieldName: 'Heat index: ',
     );
   }
 }
@@ -445,40 +191,11 @@ class _FeelsLikeWidget extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Padding(
-      padding: const EdgeInsets.all(10.0),
-      child: Expanded(
-        child: Container(
-          height: 100,
-          decoration: BoxDecoration(
-              color: Colors.lightBlueAccent.withOpacity(0.5),
-              border: Border.all(color: Colors.lightBlue),
-              borderRadius: BorderRadius.circular(40)),
-          child: Column(
-            mainAxisAlignment: MainAxisAlignment.center,
-            children: [
-              Row(
-                mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                children: [
-                  const Icon(
-                    Icons.pan_tool,
-                    size: 50,
-                    color: Colors.yellow,
-                  ),
-                  const Text(
-                    'Feels like: ',
-                    style: TextStyle(fontSize: 30),
-                  ),
-                  Text(
-                    '${weatherModel.current?.feelslikeC}°C',
-                    style: const TextStyle(fontSize: 30),
-                  )
-                ],
-              ),
-            ],
-          ),
-        ),
-      ),
+    return WeatherSecondScreenWidget(
+      icon: Icons.pan_tool,
+      text: '${weatherModel.current?.feelslikeC}',
+      color: Colors.yellow,
+      fieldName: 'Feels like: ',
     );
   }
 }
@@ -493,40 +210,11 @@ class _TemperatureWidget extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Padding(
-      padding: const EdgeInsets.all(10.0),
-      child: Expanded(
-        child: Container(
-          height: 100,
-          decoration: BoxDecoration(
-              color: Colors.lightBlueAccent.withOpacity(0.5),
-              border: Border.all(color: Colors.lightBlue),
-              borderRadius: BorderRadius.circular(40)),
-          child: Column(
-            mainAxisAlignment: MainAxisAlignment.center,
-            children: [
-              Row(
-                mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                children: [
-                  const Icon(
-                    Icons.thermostat,
-                    size: 50,
-                    color: Colors.red,
-                  ),
-                  const Text(
-                    'Temperature: ',
-                    style: TextStyle(fontSize: 30),
-                  ),
-                  Text(
-                    '${weatherModel.current?.tempC}°C',
-                    style: const TextStyle(fontSize: 30),
-                  )
-                ],
-              ),
-            ],
-          ),
-        ),
-      ),
+    return WeatherSecondScreenWidget(
+      icon: Icons.thermostat,
+      text: '${weatherModel.current?.tempC}',
+      color: Colors.red,
+      fieldName: 'Temperature: ',
     );
   }
 }

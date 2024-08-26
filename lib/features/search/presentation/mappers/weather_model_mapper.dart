@@ -28,21 +28,22 @@ class WeatherModelMapper {
 
   WeatherCurrentModel mapWeatherCurrentData(WeatherCurrentData domain) {
     final condition = domain.condition;
+    final pressure = domain.pressureMb ?? 0;
     return WeatherCurrentModel(
       lastUpdated: domain.lastUpdated ?? '',
-      tempC: domain.tempC ?? 0,
+      tempC: '${domain.tempC ?? 0}°C',
       condition: condition != null
           ? mapWeatherConditionData(condition)
           : WeatherConditionState.unknown,
-      windKph: domain.windKph ?? 0,
+      windKph: '${domain.windKph ?? 0}km/h',
       windDegree: domain.windDegree ?? 0,
-      pressureMb: domain.pressureMb ?? 0,
-      precipMm: domain.precipMm ?? 0,
-      humidity: domain.humidity ?? 0,
-      cloud: domain.cloud ?? 0,
-      feelslikeC: domain.feelslikeC ?? 0,
+      pressureMb: '${pressure * 0.75}мб',
+      precipMm: '${domain.precipMm ?? 0}мм',
+      humidity: '${domain.humidity ?? 0}%',
+      cloud: '${domain.cloud ?? 0}%',
+      feelslikeC: '${domain.feelslikeC ?? 0}°C',
       windchillC: domain.windchillC ?? 0,
-      heatindexC: domain.heatindexC ?? 0,
+      heatindexC: '${domain.heatindexC ?? 0}%',
       dewpointC: domain.dewpointC ?? 0,
       visKm: domain.visKm ?? 0,
     );

@@ -1,5 +1,6 @@
 import 'package:app_weather/features/presentation/screen/weather_second_screen.dart';
 import 'package:app_weather/features/search/presentation/bloc/city_search_bloc.dart';
+import 'package:app_weather/features/search/presentation/widgets/weather_info_widget.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_svg/flutter_svg.dart';
@@ -122,52 +123,13 @@ class _CloudCoveredSkyPercent extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Row(
-      // mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-      children: [
-        Container(
-          width: 150,
-          height: 100,
-          child: Center(
-            child: Column(
-              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-              children: [
-                Icon(
-                  Icons.cloud,
-                  size: 50,
-                  color: Colors.blue,
-                ),
-                Row(
-                  mainAxisAlignment: MainAxisAlignment.center,
-                  children: [
-                    BlocBuilder<CitySearchBloc, CitySearchState>(
-                      builder: (context, state) {
-                        return Text(
-                          '${state.data?.current?.cloud}',
-                          style: TextStyle(fontSize: 30),
-                        );
-                      },
-                    ),
-                    Text(
-                      '%',
-                      style: TextStyle(
-                        fontSize: 30,
-                      ),
-                    ),
-                    // SvgPicture.asset(
-                    //   'assets/icons/ic_snow.svg',
-                    //   width: 70,
-                    // ),
-                  ],
-                ),
-              ],
-            ),
-          ),
-          decoration: BoxDecoration(
-              border: Border.all(color: Colors.black),
-              borderRadius: BorderRadius.circular(40)),
-        ),
-      ],
+    return BlocBuilder<CitySearchBloc, CitySearchState>(
+      builder: (context, state) {
+        return CitySearchPageWidget(
+            icon: Icons.cloud,
+            text: '${state.data?.current!.cloud}',
+            color: Colors.blue);
+      },
     );
   }
 }
@@ -177,55 +139,14 @@ class _PressureWidget extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Row(
-      // mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-      children: [
-        Container(
-          width: 150,
-          height: 100,
-          child: Center(
-            child: Column(
-              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-              children: [
-                Icon(
-                  Icons.compress,
-                  size: 50,
-                  color: Colors.yellow,
-                ),
-                Row(
-                  mainAxisAlignment: MainAxisAlignment.center,
-                  children: [
-                    BlocBuilder<CitySearchBloc, CitySearchState>(
-                      builder: (context, state) {
-                        final notNullVariable =
-                            state.data?.current?.pressureMb ?? 0;
-                        final pressure = notNullVariable * 0.75;
-                        return Text(
-                          '${pressure.toInt()}',
-                          style: TextStyle(fontSize: 30),
-                        );
-                      },
-                    ),
-                    Text(
-                      'мб',
-                      style: TextStyle(
-                        fontSize: 30,
-                      ),
-                    ),
-                    // SvgPicture.asset(
-                    //   'assets/icons/ic_snow.svg',
-                    //   width: 70,
-                    // ),
-                  ],
-                ),
-              ],
-            ),
-          ),
-          decoration: BoxDecoration(
-              border: Border.all(color: Colors.black),
-              borderRadius: BorderRadius.circular(40)),
-        ),
-      ],
+    return BlocBuilder<CitySearchBloc, CitySearchState>(
+      builder: (context, state) {
+        return CitySearchPageWidget(
+          icon: Icons.compress,
+          text: '${state.data?.current?.pressureMb}',
+          color: Colors.yellow,
+        );
+      },
     );
   }
 }
@@ -266,13 +187,6 @@ class _TempText extends StatelessWidget {
               '${state.data?.current?.tempC}',
               style: TextStyle(color: Colors.white, fontSize: 70),
             ),
-            Text(
-              '°',
-              style: TextStyle(
-                color: Colors.white,
-                fontSize: 70,
-              ),
-            ),
           ],
         );
       },
@@ -285,52 +199,14 @@ class _TempIcon extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Row(
-      // mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-      children: [
-        Container(
-          width: 150,
-          height: 100,
-          child: Center(
-            child: Column(
-              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-              children: [
-                Icon(
-                  Icons.pan_tool,
-                  size: 50,
-                  color: Colors.yellow,
-                ),
-                Row(
-                  mainAxisAlignment: MainAxisAlignment.center,
-                  children: [
-                    BlocBuilder<CitySearchBloc, CitySearchState>(
-                      builder: (context, state) {
-                        return Text(
-                          '${state.data?.current?.feelslikeC}',
-                          style: TextStyle(fontSize: 30),
-                        );
-                      },
-                    ),
-                    Text(
-                      '°C',
-                      style: TextStyle(
-                        fontSize: 30,
-                      ),
-                    ),
-                    // SvgPicture.asset(
-                    //   'assets/icons/ic_snow.svg',
-                    //   width: 70,
-                    // ),
-                  ],
-                ),
-              ],
-            ),
-          ),
-          decoration: BoxDecoration(
-              border: Border.all(color: Colors.black),
-              borderRadius: BorderRadius.circular(40)),
-        ),
-      ],
+    return BlocBuilder<CitySearchBloc, CitySearchState>(
+      builder: (context, state) {
+        return CitySearchPageWidget(
+          icon: Icons.pan_tool,
+          text: '${state.data?.current?.feelslikeC}',
+          color: Colors.yellow,
+        );
+      },
     );
   }
 }
@@ -340,52 +216,14 @@ class _HumidityIcon extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Row(
-      mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-      children: [
-        Container(
-          width: 150,
-          height: 100,
-          child: Center(
-            child: Column(
-              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-              children: [
-                Icon(
-                  Icons.opacity,
-                  color: Colors.blue,
-                  size: 50,
-                ),
-                Row(
-                  mainAxisAlignment: MainAxisAlignment.center,
-                  children: [
-                    BlocBuilder<CitySearchBloc, CitySearchState>(
-                      builder: (context, state) {
-                        return Text(
-                          '${state.data?.current?.humidity}',
-                          style: TextStyle(fontSize: 30),
-                        );
-                      },
-                    ),
-                    Text(
-                      '%',
-                      style: TextStyle(
-                        fontSize: 30,
-                      ),
-                    ),
-                    // SvgPicture.asset(
-                    //   'assets/icons/ic_snow.svg',
-                    //   width: 70,
-                    // ),
-                  ],
-                ),
-              ],
-            ),
-          ),
-          decoration: BoxDecoration(
-              border: Border.all(color: Colors.black),
-              borderRadius: BorderRadius.circular(40)),
-        ),
-      ],
+    return BlocBuilder<CitySearchBloc, CitySearchState>(
+      builder: (context, state) {
+        return CitySearchPageWidget(
+          icon: Icons.opacity,
+          text: '${state.data?.current?.humidity}',
+          color: Colors.blue,
+        );
+      },
     );
   }
 }

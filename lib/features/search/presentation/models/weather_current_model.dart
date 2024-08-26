@@ -3,17 +3,17 @@ import 'package:equatable/equatable.dart';
 
 class WeatherCurrentModel extends Equatable {
   final String lastUpdated;
-  final double tempC;
+  final String tempC;
   final WeatherConditionState condition;
-  final double windKph;
+  final String windKph;
   final int windDegree;
-  final double pressureMb;
-  final double precipMm;
-  final int humidity;
-  final int cloud;
-  final double feelslikeC;
+  final String pressureMb;
+  final String precipMm;
+  final String humidity;
+  final String cloud;
+  final String feelslikeC;
   final double windchillC;
-  final double heatindexC;
+  final String heatindexC;
   final double dewpointC;
   final double visKm;
 
