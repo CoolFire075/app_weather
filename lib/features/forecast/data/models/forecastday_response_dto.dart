@@ -12,9 +12,9 @@ class ForecastdayResponseDto extends Equatable {
   ForecastdayResponseDto({required this.forecastday});
 
   factory ForecastdayResponseDto.fromJson(Map<String, dynamic> json) =>
-      _$ForecastDayInfoResponseDtoFromJson(json);
+      _$ForecastdayResponseDtoFromJson(json);
 
-  Map<String, dynamic> toJson() => _$ForecastDayInfoResponseDtoToJson(this);
+  Map<String, dynamic> toJson() => _$ForecastdayResponseDtoToJson(this);
 
   @override
   List<Object?> get props => [forecastday];

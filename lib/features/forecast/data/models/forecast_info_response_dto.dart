@@ -4,10 +4,10 @@ import 'package:app_weather/features/forecast/data/models/forecast_response_dto.
 import 'package:equatable/equatable.dart';
 import 'package:json_annotation/json_annotation.dart';
 
-part 'forecast_data_response_dto.g.dart';
+part 'forecast_info_response_dto.g.dart';
 
 @JsonSerializable()
-class ForecastDataResponseDto extends Equatable {
+class ForecastInfoResponseDto extends Equatable {
   @JsonKey(name: 'location', required: false, includeIfNull: false)
   final ForecastLocationResponseDto location;
   @JsonKey(name: 'current', required: false, includeIfNull: false)
@@ -15,16 +15,16 @@ class ForecastDataResponseDto extends Equatable {
   @JsonKey(name: 'forecast', required: false, includeIfNull: false)
   final ForecastResponseDto forecast;
 
-  const ForecastDataResponseDto({
+  const ForecastInfoResponseDto({
     required this.location,
     required this.current,
     required this.forecast,
   });
 
-  factory ForecastDataResponseDto.fromJson(Map<String, dynamic> json) =>
-      _$ForecastDataResponseDtoFromJson(json);
+  factory ForecastInfoResponseDto.fromJson(Map<String, dynamic> json) =>
+      _$ForecastInfoResponseDtoFromJson(json);
 
-  Map<String, dynamic> toJson()=> _$ForecastDataResponseDtoToJson(this);
+  Map<String, dynamic> toJson()=> _$ForecastInfoResponseDtoToJson(this);
 
   @override
   List<Object?> get props => [

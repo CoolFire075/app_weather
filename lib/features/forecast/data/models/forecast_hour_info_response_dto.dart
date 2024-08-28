@@ -6,7 +6,7 @@ part 'forecast_hour_info_response_dto.g.dart';
 
 @JsonSerializable()
 class ForecastHourInfoResponseDto extends Equatable {
-  @JsonKey(name: 'timeEpoch', required: false, includeIfNull: false)
+  @JsonKey(name: 'time_epoch', required: false, includeIfNull: false)
   final int? timeEpoch;
   @JsonKey(name: 'time', required: false, includeIfNull: false)
   final String? time;
@@ -111,6 +111,11 @@ class ForecastHourInfoResponseDto extends Equatable {
     required this.gustKph,
     required this.uv,
   });
+
+  factory ForecastHourInfoResponseDto.fromJson(Map<String, dynamic> json) =>
+      _$ForecastHourInfoResponseDtoFromJson(json);
+
+  Map<String, dynamic> toJson() => _$ForecastHourInfoResponseDtoToJson(this);
 
   @override
   List<Object?> get props => [

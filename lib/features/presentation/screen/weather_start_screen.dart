@@ -1,4 +1,3 @@
-import 'package:app_weather/features/search/presentation/screen/city_search_page.dart';
 import 'package:app_weather/main.dart';
 import 'package:flutter/material.dart';
 

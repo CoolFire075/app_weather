@@ -5,7 +5,7 @@ class WeatherConditionData extends Equatable {
   final String? icon;
   final int? code;
 
-  WeatherConditionData({
+  const WeatherConditionData({
     required this.text,
     required this.icon,
     required this.code,

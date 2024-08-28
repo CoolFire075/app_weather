@@ -12,8 +12,11 @@ class ForecastDayConditionResponseDto extends Equatable {
   @JsonKey(name: 'code', required: false, includeIfNull: false)
   final int? code;
 
-  const ForecastDayConditionResponseDto(
-      {required this.text, required this.icon, required this.code});
+  const ForecastDayConditionResponseDto({
+    required this.text,
+    required this.icon,
+    required this.code,
+  });
 
   factory ForecastDayConditionResponseDto.fromJson(Map<String, dynamic> json) =>
       _$ForecastDayConditionResponseDtoFromJson(json);
@@ -22,7 +25,6 @@ class ForecastDayConditionResponseDto extends Equatable {
       _$ForecastDayConditionResponseDtoToJson(this);
 
   @override
-  // TODO: implement props
   List<Object?> get props => [
         text,
         icon,

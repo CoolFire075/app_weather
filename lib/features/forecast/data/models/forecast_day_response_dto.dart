@@ -47,27 +47,28 @@ class ForecastDayResponseDto extends Equatable {
   @JsonKey(name: 'uv', required: false, includeIfNull: false)
   final double? uv;
 
-  const ForecastDayResponseDto(
-      {required this.maxtempC,
-      required this.maxtempF,
-      required this.mintempC,
-      required this.mintempF,
-      required this.avgtempC,
-      required this.avgtempF,
-      required this.maxwindMph,
-      required this.maxwindKph,
-      required this.totalprecipMm,
-      required this.totalprecipIn,
-      required this.totalsnowCm,
-      required this.avgvisKm,
-      required this.avgvisMiles,
-      required this.avghumidity,
-      required this.dailyWillItRain,
-      required this.dailyChanceOfRain,
-      required this.dailyWillItSnow,
-      required this.dailyChanceOfSnow,
-      required this.condition,
-      required this.uv});
+  const ForecastDayResponseDto({
+    required this.maxtempC,
+    required this.maxtempF,
+    required this.mintempC,
+    required this.mintempF,
+    required this.avgtempC,
+    required this.avgtempF,
+    required this.maxwindMph,
+    required this.maxwindKph,
+    required this.totalprecipMm,
+    required this.totalprecipIn,
+    required this.totalsnowCm,
+    required this.avgvisKm,
+    required this.avgvisMiles,
+    required this.avghumidity,
+    required this.dailyWillItRain,
+    required this.dailyChanceOfRain,
+    required this.dailyWillItSnow,
+    required this.dailyChanceOfSnow,
+    required this.condition,
+    required this.uv,
+  });
 
   factory ForecastDayResponseDto.fromJson(Map<String, dynamic> json) =>
       _$ForecastDayResponseDtoFromJson(json);

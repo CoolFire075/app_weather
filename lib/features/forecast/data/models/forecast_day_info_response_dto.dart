@@ -8,6 +8,7 @@ part 'forecast_day_info_response_dto.g.dart';
 
 @JsonSerializable()
 class ForecastDayInfoResponseDto extends Equatable {
+
   @JsonKey(name: 'date', required: false, includeIfNull: false)
   final String? date;
 
@@ -21,9 +22,9 @@ class ForecastDayInfoResponseDto extends Equatable {
   final ForecastAstroResponseDto? astro;
 
   @JsonKey(name: 'hour', required: false, includeIfNull: false)
-  final List<ForecastHourInfoResponseDto> hour;
+  final List<ForecastHourInfoResponseDto?> hour;
 
-  const ForecastDayInfoResponseDto({
+   ForecastDayInfoResponseDto({
     required this.date,
     required this.dateEpoch,
     required this.day,
@@ -35,6 +36,7 @@ class ForecastDayInfoResponseDto extends Equatable {
       _$ForecastDayInfoResponseDtoFromJson(json);
 
   Map<String, dynamic> toJson() => _$ForecastDayInfoResponseDtoToJson(this);
+
 
   @override
   List<Object?> get props => [
