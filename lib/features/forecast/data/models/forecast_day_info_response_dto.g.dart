@@ -19,8 +19,8 @@ ForecastDayInfoResponseDto _$ForecastDayInfoResponseDtoFromJson(
           ? null
           : ForecastAstroResponseDto.fromJson(
               json['astro'] as Map<String, dynamic>),
-      hour: (json['hour'] as List<dynamic>)
-          .map((e) => e == null
+      hour: (json['hour'] as List<dynamic>?)
+          ?.map((e) => e == null
               ? null
               : ForecastHourInfoResponseDto.fromJson(e as Map<String, dynamic>))
           .toList(),
@@ -40,6 +40,6 @@ Map<String, dynamic> _$ForecastDayInfoResponseDtoToJson(
   writeNotNull('date_epoch', instance.dateEpoch);
   writeNotNull('day', instance.day);
   writeNotNull('astro', instance.astro);
-  val['hour'] = instance.hour;
+  writeNotNull('hour', instance.hour);
   return val;
 }

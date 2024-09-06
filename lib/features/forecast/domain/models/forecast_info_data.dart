@@ -1,7 +1,7 @@
 import 'package:freezed_annotation/freezed_annotation.dart';
 
 import 'forecast_current_data.dart';
-import 'forecast_data.dart';
+import 'forecast_list_data.dart';
 import 'forecast_location_data.dart';
 
 part 'forecast_info_data.freezed.dart';
@@ -12,6 +12,6 @@ class ForecastInfoData with _$ForecastInfoData{
   factory ForecastInfoData({
     ForecastLocationData? location,
     ForecastCurrentData?  current,
-    ForecastData? forecast,
-}) = _ForecastInfoData;
+    ForecastListData? forecast,
+  }) = _ForecastInfoData;
 }

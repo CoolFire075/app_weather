@@ -1,4 +1,3 @@
-import 'package:app_weather/features/search/data/repository/city_search_repository_impl.dart';
 import 'package:app_weather/features/search/domain/repository/city_search_repository.dart';
 
 import 'models/weather_data.dart';

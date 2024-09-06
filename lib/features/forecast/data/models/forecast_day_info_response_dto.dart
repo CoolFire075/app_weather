@@ -22,7 +22,7 @@ class ForecastDayInfoResponseDto extends Equatable {
   final ForecastAstroResponseDto? astro;
 
   @JsonKey(name: 'hour', required: false, includeIfNull: false)
-  final List<ForecastHourInfoResponseDto?> hour;
+  final List<ForecastHourInfoResponseDto?>? hour;
 
    ForecastDayInfoResponseDto({
     required this.date,

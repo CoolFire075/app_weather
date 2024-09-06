@@ -1,19 +1,16 @@
+import 'package:app_weather/features/forecast/presentation/models/forecast_hour_info_condition_model.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 
-import 'forecast_hour_info_condition_data.dart';
-
-part 'forecast_hour_info_data.freezed.dart';
+part 'forecast_hour_info_model.freezed.dart';
 
 @freezed
-class ForecastHourInfoData with _$ForecastHourInfoData {
-  factory ForecastHourInfoData({
+class ForecastHourInfoModel with _$ForecastHourInfoModel{
+  factory ForecastHourInfoModel({
     int? timeEpoch,
     String? time,
     double? tempC,
-    double? tempF,
     int? isDay,
-    ForecastHourInfoConditionData? condition,
-    double? windMph,
+    ForecastHourInfoConditionModel? condition,
     double? windKph,
     int? windDegree,
     String? windDir,
@@ -25,21 +22,15 @@ class ForecastHourInfoData with _$ForecastHourInfoData {
     int? humidity,
     int? cloud,
     double? feelslikeC,
-    double? feelslikeF,
     double? windchillC,
-    double? windchillF,
     double? heatindexC,
-    double? heatindexF,
     double? dewpointC,
-    double? dewpointF,
     int? willItRain,
     int? chanceOfRain,
     int? willItSnow,
     int? chanceOfSnow,
     double? visKm,
-    double? visMiles,
-    double? gustMhp,
     double? gustKph,
     int? uv,
-  }) = _ForecastHourInfoData;
+  }) = _ForecastHourInfoModel;
 }

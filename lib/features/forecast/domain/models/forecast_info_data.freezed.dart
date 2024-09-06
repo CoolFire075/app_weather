@@ -18,7 +18,7 @@ final _privateConstructorUsedError = UnsupportedError(
 mixin _$ForecastInfoData {
   ForecastLocationData? get location => throw _privateConstructorUsedError;
   ForecastCurrentData? get current => throw _privateConstructorUsedError;
-  ForecastData? get forecast => throw _privateConstructorUsedError;
+  ForecastListData? get forecast => throw _privateConstructorUsedError;
 
   /// Create a copy of ForecastInfoData
   /// with the given fields replaced by the non-null parameter values.
@@ -36,11 +36,11 @@ abstract class $ForecastInfoDataCopyWith<$Res> {
   $Res call(
       {ForecastLocationData? location,
       ForecastCurrentData? current,
-      ForecastData? forecast});
+      ForecastListData? forecast});
 
   $ForecastLocationDataCopyWith<$Res>? get location;
   $ForecastCurrentDataCopyWith<$Res>? get current;
-  $ForecastDataCopyWith<$Res>? get forecast;
+  $ForecastListDataCopyWith<$Res>? get forecast;
 }
 
 /// @nodoc
@@ -74,7 +74,7 @@ class _$ForecastInfoDataCopyWithImpl<$Res, $Val extends ForecastInfoData>
       forecast: freezed == forecast
           ? _value.forecast
           : forecast // ignore: cast_nullable_to_non_nullable
-              as ForecastData?,
+              as ForecastListData?,
     ) as $Val);
   }
 
@@ -110,12 +110,12 @@ class _$ForecastInfoDataCopyWithImpl<$Res, $Val extends ForecastInfoData>
   /// with the given fields replaced by the non-null parameter values.
   @override
   @pragma('vm:prefer-inline')
-  $ForecastDataCopyWith<$Res>? get forecast {
+  $ForecastListDataCopyWith<$Res>? get forecast {
     if (_value.forecast == null) {
       return null;
     }
 
-    return $ForecastDataCopyWith<$Res>(_value.forecast!, (value) {
+    return $ForecastListDataCopyWith<$Res>(_value.forecast!, (value) {
       return _then(_value.copyWith(forecast: value) as $Val);
     });
   }
@@ -132,14 +132,14 @@ abstract class _$$ForecastInfoDataImplCopyWith<$Res>
   $Res call(
       {ForecastLocationData? location,
       ForecastCurrentData? current,
-      ForecastData? forecast});
+      ForecastListData? forecast});
 
   @override
   $ForecastLocationDataCopyWith<$Res>? get location;
   @override
   $ForecastCurrentDataCopyWith<$Res>? get current;
   @override
-  $ForecastDataCopyWith<$Res>? get forecast;
+  $ForecastListDataCopyWith<$Res>? get forecast;
 }
 
 /// @nodoc
@@ -171,7 +171,7 @@ class __$$ForecastInfoDataImplCopyWithImpl<$Res>
       forecast: freezed == forecast
           ? _value.forecast
           : forecast // ignore: cast_nullable_to_non_nullable
-              as ForecastData?,
+              as ForecastListData?,
     ));
   }
 }
@@ -186,7 +186,7 @@ class _$ForecastInfoDataImpl implements _ForecastInfoData {
   @override
   final ForecastCurrentData? current;
   @override
-  final ForecastData? forecast;
+  final ForecastListData? forecast;
 
   @override
   String toString() {
@@ -222,14 +222,14 @@ abstract class _ForecastInfoData implements ForecastInfoData {
   factory _ForecastInfoData(
       {final ForecastLocationData? location,
       final ForecastCurrentData? current,
-      final ForecastData? forecast}) = _$ForecastInfoDataImpl;
+      final ForecastListData? forecast}) = _$ForecastInfoDataImpl;
 
   @override
   ForecastLocationData? get location;
   @override
   ForecastCurrentData? get current;
   @override
-  ForecastData? get forecast;
+  ForecastListData? get forecast;
 
   /// Create a copy of ForecastInfoData
   /// with the given fields replaced by the non-null parameter values.

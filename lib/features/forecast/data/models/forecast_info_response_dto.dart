@@ -1,8 +1,9 @@
 import 'package:app_weather/features/forecast/data/models/forecast_current_response_dto.dart';
 import 'package:app_weather/features/forecast/data/models/forecast_location_response_dto.dart';
-import 'package:app_weather/features/forecast/data/models/forecast_response_dto.dart';
 import 'package:equatable/equatable.dart';
 import 'package:json_annotation/json_annotation.dart';
+
+import 'forecast_list_response_dto.dart';
 
 part 'forecast_info_response_dto.g.dart';
 
@@ -13,7 +14,7 @@ class ForecastInfoResponseDto extends Equatable {
   @JsonKey(name: 'current', required: false, includeIfNull: false)
   final ForecastCurrentResponseDto current;
   @JsonKey(name: 'forecast', required: false, includeIfNull: false)
-  final ForecastResponseDto forecast;
+  final ForecastListResponseDto forecast;
 
   const ForecastInfoResponseDto({
     required this.location,

@@ -4,8 +4,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import '../bloc/city_search_bloc.dart';
 
 class CitySearchPageWidget extends StatelessWidget {
-  const CitySearchPageWidget(
-      {super.key, required this.icon,  this.text, required this.color});
+  const CitySearchPageWidget({super.key, required this.icon, this.text, required this.color});
 
   final IconData icon;
   final String? text;
@@ -13,7 +12,7 @@ class CitySearchPageWidget extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    if(text == null) return SizedBox();
+    if (text == null) return const SizedBox();
     return Row(
       // mainAxisAlignment: MainAxisAlignment.spaceEvenly,
       children: [
@@ -21,8 +20,7 @@ class CitySearchPageWidget extends StatelessWidget {
           width: 150,
           height: 100,
           decoration: BoxDecoration(
-              border: Border.all(color: Colors.black),
-              borderRadius: BorderRadius.circular(40)),
+              border: Border.all(color: Colors.black), borderRadius: BorderRadius.circular(40)),
           child: Center(
             child: Column(
               mainAxisAlignment: MainAxisAlignment.spaceEvenly,

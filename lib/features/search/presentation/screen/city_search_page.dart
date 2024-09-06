@@ -254,12 +254,12 @@ class _SearchButton extends StatelessWidget {
                     ),
                   );
                 },
-                child: Icon(Icons.add),
+                child: const Icon(Icons.add),
               ),
             ),
             FloatingActionButton(
               onPressed: () => bloc.add(CitySearchDataFetched()),
-              child: Icon(Icons.search_rounded),
+              child: const Icon(Icons.search_rounded),
             ),
           ],
         );
@@ -276,7 +276,7 @@ class _SearchTextField extends StatelessWidget {
     final bloc = context.read<CitySearchBloc>();
     return TextField(
       controller: bloc.searchController,
-      decoration: InputDecoration(
+      decoration: const InputDecoration(
         labelText: 'Search',
       ),
     );
@@ -299,7 +299,7 @@ class _LocationText extends StatelessWidget {
                 children: [
                   Text(
                     'City: ${state.data?.location?.name.toString() ?? ''}',
-                    style: TextStyle(fontSize: 30),
+                    style: const TextStyle(fontSize: 30),
                   ),
                 ],
               ),
@@ -307,7 +307,7 @@ class _LocationText extends StatelessWidget {
                 children: [
                   Text(
                     'Region: ${state.data?.location?.region.toString() ?? ''}',
-                    style: TextStyle(fontSize: 30),
+                    style: const TextStyle(fontSize: 30),
                   ),
                 ],
               ),
@@ -315,7 +315,7 @@ class _LocationText extends StatelessWidget {
                 children: [
                   Text(
                     'Country: ${state.data?.location?.country.toString() ?? ''}',
-                    style: TextStyle(fontSize: 30),
+                    style: const TextStyle(fontSize: 30),
                   ),
                 ],
               ),

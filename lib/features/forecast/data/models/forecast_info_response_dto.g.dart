@@ -13,7 +13,7 @@ ForecastInfoResponseDto _$ForecastInfoResponseDtoFromJson(
           json['location'] as Map<String, dynamic>),
       current: ForecastCurrentResponseDto.fromJson(
           json['current'] as Map<String, dynamic>),
-      forecast: ForecastResponseDto.fromJson(
+      forecast: ForecastListResponseDto.fromJson(
           json['forecast'] as Map<String, dynamic>),
     );
 

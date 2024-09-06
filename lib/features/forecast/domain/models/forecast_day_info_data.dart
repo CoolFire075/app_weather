@@ -13,6 +13,6 @@ class ForecastDayInfoData with _$ForecastDayInfoData {
     int? dateEpoch,
     ForecastDayData? day,
     ForecastAstroData? astro,
-    List<ForecastHourInfoData?> hour,
+    List<ForecastHourInfoData?>? hour,
   }) = _ForecastDayInfoData;
 }
