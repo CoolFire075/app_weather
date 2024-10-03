@@ -6,6 +6,7 @@ import 'package:http/http.dart';
 
 import '../../../../core/network/constants.dart';
 
+
 class ForecastApi {
   Future<ForecastInfoResponseDto?> fetchForecastData(
       {required String query}) async {

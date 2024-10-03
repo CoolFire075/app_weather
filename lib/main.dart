@@ -1,5 +1,4 @@
 import 'package:app_weather/core/di/main_module.dart';
-import 'package:app_weather/features/forecast/presentation/screen/forecast_screen.dart';
 import 'package:app_weather/features/presentation/screen/weather_start_screen.dart';
 import 'package:app_weather/features/search/data/api/city_search_api.dart';
 import 'package:app_weather/features/search/presentation/bloc/city_search_bloc.dart';
@@ -9,7 +8,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 
 void main() {
   initMainModule();
-  runApp(const ForecastScreen());
+  runApp(const StartScreen());
   // runApp(const StartScreen());
 }
 

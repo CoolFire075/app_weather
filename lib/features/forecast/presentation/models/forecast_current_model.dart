@@ -1,4 +1,3 @@
-import 'package:app_weather/features/forecast/domain/models/forecast_condition_data.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 
 import 'forecast_condition_model.dart';
